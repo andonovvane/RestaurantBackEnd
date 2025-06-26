@@ -1,0 +1,9 @@
+.DS_STORE
+.idea
+*.sqlite3
+__pycache__
+*.pyc
+media
+static
+*.env
+envs

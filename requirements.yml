@@ -1,0 +1,18 @@
+name: RestaurantApp
+dependencies:
+  - python=3.13.2
+  - pip:
+      - django==5.1.7                                     #django web framework
+      - djangorestframework==3.15.2                       #django REST framework
+      - djangorestframework_simplejwt==5.5.0              #Library for JWT tokens
+      - django-filter==25.1                               #
+      - drf-yasg==1.21.9                                  #Automatic API documentation
+      - pillow==11.1.0                                   #Python img library - needed when handling images
+      - markdown==3.8                                    #used by drf-yasg internally
+      - python-dotenv==1.1.0                             # Load evironment variables on program start from files
+      - whitenoise==6.9.0                                #Serve static files for production
+      - django-cors-headers==4.7.0                       #Used to allow connection between FE and REST API through different origins in the browser
+      - django-storages==1.14.6                          # Used to connect to deployed external media files storage or CDN
+      - boto3==1.37.33                                   # AWS SDK - allows django-storages to interact with services like AWS S3 or DO Spaces
+      - psycopg2-binary==2.9.10                          # Adapter/Driver for Python and PostgreSQL
+      - dj-database-url==3.0.0
