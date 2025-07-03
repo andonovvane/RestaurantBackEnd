@@ -34,7 +34,10 @@ SERVER_TYPE = os.environ.get('SERVER_TYPE', 'dev')
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['restaurant-app-test-4156e9523345.herokuapp.com']
+
+if SERVER_TYPE != 'prod':
+    ALLOWED_HOSTS += ['localhost']
 
 CORS_ALLOWED_ORIGINS = [] #'https://livecoding-spa-constructor.netlify.app'
 
