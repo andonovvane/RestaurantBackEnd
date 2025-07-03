@@ -1,0 +1,1 @@
+web: gunicorn -w 4 restaurant.wsgi:application

@@ -16,3 +16,4 @@ dependencies:
       - boto3==1.37.33                                   # AWS SDK - allows django-storages to interact with services like AWS S3 or DO Spaces
       - psycopg2-binary==2.9.10                          # Adapter/Driver for Python and PostgreSQL
       - dj-database-url==3.0.0
+      - gunicorn==23.0.0                                 #Production grade Python Web Server
