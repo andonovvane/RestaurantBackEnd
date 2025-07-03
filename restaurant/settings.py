@@ -136,6 +136,9 @@ DATABASES = {
     }
 }
 
+if SERVER_TYPE == 'prod':
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
 # postgresql://restaurant_db_render_user:9XMWW0zZUJH0ZNv2tw2Q76CAuNoowI6x@dpg-d1e3smbe5dus739m9i80-a.frankfurt-postgres.render.com/restaurant_db_render
 
 # Password validation
