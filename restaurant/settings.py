@@ -39,13 +39,10 @@ ALLOWED_HOSTS = ['restaurant-app-test-4156e9523345.herokuapp.com']
 if SERVER_TYPE != 'prod':
     ALLOWED_HOSTS += ['localhost']
 
-CORS_ALLOWED_ORIGINS = [] #'https://livecoding-spa-constructor.netlify.app'
+CORS_ALLOWED_ORIGINS = ['https://restaurant-app-test.netlify.app']
 
 if SERVER_TYPE != 'prod':
-    CORS_ALLOWED_ORIGINS += ['http://localhost:5173']
-
-# temporary:
-CORS_ALLOWED_ORIGINS += ['http://localhost:5173']
+    CORS_ALLOWED_ORIGINS += ['http://localhost:5174']
 
 # Application definition
 
@@ -75,13 +72,6 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'user.User'
 
 MIDDLEWARE = [
-    # 'django.middleware.security.SecurityMiddleware',
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
