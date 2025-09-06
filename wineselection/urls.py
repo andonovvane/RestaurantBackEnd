@@ -1,8 +1,8 @@
 from django.urls import path
 
-from wineselection.views import ListCreateWineView, RetrieveUpdateDeleteWineView
+from wineselection.views import RetrieveUpdateDeleteWineView, PublicWineListView
 
 urlpatterns = [
-    path('', ListCreateWineView.as_view()),
+    path('', PublicWineListView.as_view()),
     path('<int:pk>/', RetrieveUpdateDeleteWineView.as_view())
 ]

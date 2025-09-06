@@ -1,8 +1,8 @@
 from django.urls import path
 
-from menuItems.views import ListCreateMenuItemView, RetrieveUpdateDeleteMenuItemView
+from menuItems.views import RetrieveUpdateDeleteMenuItemView, PublicMenuItemListView
 
 urlpatterns = [
-    path('', ListCreateMenuItemView.as_view()),
+    path('', PublicMenuItemListView.as_view()),
     path('<int:pk>/', RetrieveUpdateDeleteMenuItemView.as_view())
 ]

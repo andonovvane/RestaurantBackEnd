@@ -16,6 +16,7 @@ from django.conf.global_settings import CSRF_TRUSTED_ORIGINS, STORAGES
 from dotenv import load_dotenv
 import os
 import dj_database_url
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,12 +38,18 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = ['restaurant-app-test-4156e9523345.herokuapp.com']
 
 if SERVER_TYPE != 'prod':
-    ALLOWED_HOSTS += ['localhost']
+    ALLOWED_HOSTS += ['localhost', '127.0.0.1']
 
 CORS_ALLOWED_ORIGINS = ['https://restaurant-app-test.netlify.app']
 
 if SERVER_TYPE != 'prod':
-    CORS_ALLOWED_ORIGINS += ['http://localhost:5174']
+    CORS_ALLOWED_ORIGINS += ['http://localhost:5173']
+
+if SERVER_TYPE != 'prod':
+    CSRF_TRUSTED_ORIGINS = [
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+    ]
 
 # Application definition
 
@@ -56,6 +63,7 @@ INSTALLED_APPS = [
 
     #3rd party apps
     'rest_framework',
+    'rest_framework_simplejwt',
     'drf_yasg',
     'corsheaders',
     'storages',
@@ -192,3 +200,20 @@ else:
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ]
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=2),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7)
+}
+
+AUTH_USER_MODEL = 'user.User'

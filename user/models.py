@@ -2,14 +2,19 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class User(AbstractUser):
-    # Field used for authentication
     USERNAME_FIELD = 'email'
-
-    # Additional fields required when using createsuperuser (USERNAME_FIELD and passwords are always required)
     REQUIRED_FIELDS = ['username']
 
     email = models.EmailField(unique=True)
-    is_client = models.BooleanField(default=False)  # Add the new field
+
+    ROLE_CHOICES = [
+        ('client', 'Client'),
+        ('waiter', 'Waiter'),
+        ('kitcher', 'Kitcher'),
+        ('ceo', 'CEO'),
+    ]
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, blank=True, null=True)
+    table_id = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
-        return self.username
+        return f"{self.username} ({self.role})" if self.role else self.username
