@@ -1,18 +1,3 @@
-# from rest_framework import  serializers
-#
-# from ingredients.serializers import IngredientSerializer
-# from menuItems.models import MenuItem
-#
-# class MenuItemSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = MenuItem
-#         fields = ['name', 'price', 'description', 'category', 'ingredients']
-#
-#     def to_representation(self, instance):
-#         representation = super().to_representation(instance)
-#         representation['ingredients'] = IngredientSerializer(instance.ingredients, many=True).data
-#         return representation
-
 from rest_framework import serializers
 from menuItems.models import MenuItem
 from menuItemIngredients.serializers import MenuItemIngredientCreateSerializer

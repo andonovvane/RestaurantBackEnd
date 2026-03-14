@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework import status
 
 User = get_user_model()
 
@@ -22,10 +23,10 @@ class UserProfileView(APIView):
 class QRLoginView(APIView):
     permission_classes = [AllowAny]
 
-    def get(self, request):
-        table_id = request.query_params.get("table_id")
+    def post(self, request):
+        table_id = request.data.get("table_id")
         if not table_id:
-            return Response({"error": "No table_id provided"}, status=400)
+            return Response({"error": "No table_id provided"}, status=status.HTTP_400_BAD_REQUEST)
 
         user, created = User.objects.get_or_create(
             username=f"table_{table_id}",
